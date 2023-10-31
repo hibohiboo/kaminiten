@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "kaminiten",
   "version": "0.0.1",
   "description": "ゲームブック型TRPG風電子ゲーム",
