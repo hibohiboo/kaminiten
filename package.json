@@ -1,0 +1,12 @@
+{
+  "name": "kaminiten",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pnpm:devPreinstall": "echo githooks setting && git config --local core.hooksPath .githooks"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
