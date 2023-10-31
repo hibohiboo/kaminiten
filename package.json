@@ -1,12 +1,11 @@
 {
   "name": "kaminiten",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "ゲームブック型TRPG風電子ゲーム",
   "main": "index.js",
+  "devDependencies": {},
   "scripts": {
-    "pnpm:devPreinstall": "echo githooks setting && git config --local core.hooksPath .githooks"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
