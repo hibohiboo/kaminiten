@@ -1,0 +1,4 @@
+{
+  "extends": "@kaminiten/tsconfig",
+  "include": ["src"]
+}

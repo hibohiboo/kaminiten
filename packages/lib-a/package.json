@@ -6,6 +6,6 @@
     "build": "tsc ./src/index.ts --outDir ./dist --declaration"
   },
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "@kaminiten/tsconfig": "*"
   }
 }

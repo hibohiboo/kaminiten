@@ -4,6 +4,8 @@
   "version": "0.0.1",
   "description": "ゲームブック型TRPG風電子ゲーム",
   "devDependencies": {
+    "eslint": "^8.52.0",
+    "prettier": "^3.0.3",
     "turbo": "^1.10.16"
   },
   "scripts": {
