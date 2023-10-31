@@ -13,6 +13,7 @@
   "license": "MIT",
   "packageManager": "npm@9.8.1",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "app"
   ]
 }
