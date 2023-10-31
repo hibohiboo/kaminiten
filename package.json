@@ -2,10 +2,13 @@
   "name": "kaminiten",
   "version": "0.0.1",
   "description": "ゲームブック型TRPG風電子ゲーム",
-  "main": "index.js",
   "devDependencies": {},
   "scripts": {
     "prepare": "git config --local core.hooksPath .githooks && echo Changed hooks directory when npm install"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "npm@9.8.1",
+  "workspaces": [
+    "packages/*"
+  ]
 }
