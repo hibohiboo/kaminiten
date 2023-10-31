@@ -3,9 +3,12 @@
   "name": "kaminiten",
   "version": "0.0.1",
   "description": "ゲームブック型TRPG風電子ゲーム",
-  "devDependencies": {},
+  "devDependencies": {
+    "turbo": "^1.10.16"
+  },
   "scripts": {
-    "prepare": "git config --local core.hooksPath .githooks && echo Changed hooks directory when npm install"
+    "prepare": "git config --local core.hooksPath .githooks && echo Changed hooks directory when npm install",
+    "build": "turbo build"
   },
   "license": "MIT",
   "packageManager": "npm@9.8.1",
