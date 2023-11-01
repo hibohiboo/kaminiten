@@ -6,7 +6,7 @@ module.exports = {
     "turbo",
     "prettier",
   ],
-  plugins: ["react-refresh"],
+  plugins: ["react-refresh", "import", "unused-imports"],
   rules: {
     "react-refresh/only-export-components": [
       "warn",
