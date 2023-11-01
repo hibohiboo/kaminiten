@@ -1,5 +1,5 @@
 module.exports = {
   extends: [
-    "@kaminiten/eslint-config-custom/lib/backend",
+    "@kaminiten/eslint-config-custom/backend",
   ],
 };
