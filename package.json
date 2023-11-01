@@ -4,9 +4,11 @@
   "version": "0.0.1",
   "description": "ゲームブック型TRPG風電子ゲーム",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
     "eslint": "^8.52.0",
     "prettier": "^3.0.3",
-    "turbo": "^1.10.16"
+    "turbo": "^1.10.16",
+    "typescript": "^5.2.2"
   },
   "scripts": {
     "prepare": "git config --local core.hooksPath .githooks && echo Changed hooks directory when npm install",
