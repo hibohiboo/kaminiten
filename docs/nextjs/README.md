@@ -1,4 +1,5 @@
-https://zenn.dev/hiromu617/articles/1ed6811dc6cf26
+[[Next.js]App Router時代の静的サイトの作り方](https://zenn.dev/hiromu617/articles/1ed6811dc6cf26)
+[Next.js App Router で MDX を利用](https://zenn.dev/hayato94087/articles/1411f7af3eaee4) ... http://localhost:3000/contents/article01 で確認可能
 https://nextjs.org/docs/app/building-your-application/configuring/mdx#deep-dive-how-do-you-transform-markdown-into-html
 
 
