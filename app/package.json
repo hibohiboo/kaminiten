@@ -11,14 +11,16 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.18.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.33",
+    "@kaminiten/eslint-config-custom": "*",
+    "@kaminiten/tsconfig": "*",
+    "@types/react": "^18.2.34",
     "@types/react-dom": "^18.2.14",
     "@vitejs/plugin-react-swc": "^3.4.1",
-    "vite": "^4.5.0",
-    "@kaminiten/tsconfig": "*",
-    "@kaminiten/eslint-config-custom": "*"
+    "dotenv": "^16.3.1",
+    "vite": "^4.5.0"
   }
 }

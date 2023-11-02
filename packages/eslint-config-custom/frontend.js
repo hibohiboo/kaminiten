@@ -12,5 +12,7 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    "import/extensions":["off"]
+    // ["error", "ignorePackages", { "js":"never","ts":"never","tsx":"never" }],
   },
 };
