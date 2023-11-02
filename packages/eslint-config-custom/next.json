@@ -1,0 +1,8 @@
+{
+  "extends": [
+     "@kaminiten/eslint-config-custom/defaults",
+     "next/core-web-vitals",
+     "turbo",
+     "prettier"
+  ]
+}
