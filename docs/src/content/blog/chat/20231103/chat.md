@@ -1,3 +1,10 @@
+---
+title: 'ChatGpt'
+description: 'チャットGPT 2023-11-03'
+pubDate: '2023-11-03'
+heroImage: '/blog-placeholder-1.jpg'
+---
+
 ## ここまで、カミニテンがどのようなゲームか、企画書の感じでまとめてください
 
 プロジェクト名: カミニテン
@@ -78,6 +85,7 @@
 ### 回答
 TypeScriptを使用し、モノレポ形式でバックエンドとフロントエンドを統合し、AWSでのデプロイを行い、ドキュメントもリポジトリ内で管理するプロジェクトの場合、適切なディレクトリ構造を設計することが重要です。以下は、一般的なディレクトリ構造の提案です：
 
+```
 
 project-root/
 │
@@ -110,3 +118,5 @@ project-root/
 ├── .gitignore            (Gitの無視リスト)
 ├── package.json          (ルートの依存関係と設定)
 ├── tsconfig.json         (TypeScriptプロジェクト設定)
+```
+
