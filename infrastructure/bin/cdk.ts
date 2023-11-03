@@ -28,6 +28,7 @@ new CardDraftTRPGFrontCdkStack(app, `${processEnv.PROJECT_ID}-FrontCdkStack`, {
   projectNameTag: processEnv.TAG_PROJECT_NAME,
   subDirectoryPath: [
     { path: '../app/dist', alias: 'app' },
+    { path: '../docs/dist', alias: 'dist' },
     { path: '../udon/udonarium/dist/udonarium', alias: 'udonarium' },
   ],
   env,
