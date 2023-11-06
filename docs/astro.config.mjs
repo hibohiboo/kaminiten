@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://d2k9ctsweqhomg.cloudfront.net/',
 	integrations: [mdx(), sitemap()],
-	base: '/docs'
+  base:  '/docs' // import.meta.env.DEV ? "" : "/docs",
 });
