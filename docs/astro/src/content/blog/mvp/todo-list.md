@@ -1,3 +1,9 @@
+---
+title: 'MVP'
+description: 'MVPを作成するためのTODOリスト'
+pubDate: '2023-11-06'
+heroImage: '/blog-placeholder-1.jpg'
+---
 
 ## 1. プロジェクトの初期設定
 

@@ -19,6 +19,6 @@
     "packages/*",
     "app",
     "udon/*",
-    "docs"
+    "docs/*"
   ]
 }
