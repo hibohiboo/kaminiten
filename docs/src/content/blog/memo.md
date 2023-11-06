@@ -1,3 +1,11 @@
+---
+title: 'モノレポのメモ'
+description: 'モノレポ初期設定'
+pubDate: '2023-11-06'
+heroImage: '/blog-placeholder-3.jpg'
+---
+
+
 ゲームブック型TRPG風電子ゲーム
 
 ## パッケージ管理
