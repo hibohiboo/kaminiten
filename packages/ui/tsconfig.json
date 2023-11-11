@@ -1,0 +1,12 @@
+{
+
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@yakumi-components/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "stories/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "extends": "@yakumi/tsconfig/react"
+}
