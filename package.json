@@ -13,7 +13,8 @@
   "scripts": {
     "prepare": "git config --local core.hooksPath .githooks && echo Changed hooks directory when npm install",
     "build": "turbo build",
-    "ncu": "turbo ncu"
+    "ncu": "turbo ncu",
+    "dev": "turbo dev"
   },
   "packageManager": "npm@9.8.1",
   "workspaces": [
