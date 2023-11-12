@@ -4,7 +4,7 @@ export interface FileNodeInfo {
   dirPath: string;
 }
 export interface FileNodeState extends FileNodeInfo {
+  id: string; // dirPath + name: slash区切りのpath ex) dir1/dir2/file1
   isExpanded: boolean;
-  id: string;
   children?: FileNodeState[];
 }

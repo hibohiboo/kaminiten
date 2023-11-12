@@ -4,12 +4,13 @@ import { getDirectoryHandle, getRootDirectoryHandle, readDirectory } from '.';
 
 const updateState = async (
   item: FileNodeState,
-  target: string,
+  target: string, // slash区切りのpath ex) dir1/dir2/file1
 ): Promise<FileNodeState> => {
+  // IDが一致したら更新処理を行う
   if (item.id === target) {
     const rootHandle = await getRootDirectoryHandle();
     const handle = await getDirectoryHandle(rootHandle, item.id);
-    const children = await readDirectory(handle, item.name);
+    const children = await readDirectory(handle, item.id);
     return {
       ...item,
       isExpanded: true,
@@ -20,6 +21,8 @@ const updateState = async (
       })),
     };
   }
+
+  // 子供がいる場合は再帰的に更新
   if (item.children) {
     return {
       ...item,
@@ -35,7 +38,6 @@ export const updateFileNodeState = async (
   _node: TreeNodeInfo,
   fsNodes: FileNodeState[],
 ) => {
-  console.log('updateFileNodeState', _node.id);
   const newFsList = await Promise.all(
     fsNodes.map((item) => updateState(item, _node.id as string)),
   );
