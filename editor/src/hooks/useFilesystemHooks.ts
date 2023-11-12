@@ -19,7 +19,7 @@ export function useFileSystem() {
 
   const handleNodeExpand = React.useCallback(
     async (node: TreeNodeInfo) => {
-      const newFsList = await updateFileNodeState(node, fsNodes);
+      const newFsList = await updateFileNodeState(node.id as string, fsNodes);
       setObj(newFsList);
     },
     [fsNodes, setObj],

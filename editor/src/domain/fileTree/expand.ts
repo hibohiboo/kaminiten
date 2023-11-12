@@ -1,4 +1,3 @@
-import { TreeNodeInfo } from '@blueprintjs/core';
 import {
   getDirectoryHandle,
   getRootDirectoryHandle,
@@ -44,11 +43,11 @@ const updateState = async (
 };
 
 export const updateFileNodeState = async (
-  _node: TreeNodeInfo,
+  path: string,
   fsNodes: FileNodeState[],
 ) => {
   const newFsList = await Promise.all(
-    fsNodes.map((item) => updateState(item, _node.id as string)),
+    fsNodes.map((item) => updateState(item, path)),
   );
   return newFsList;
 };
