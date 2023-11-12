@@ -12,4 +12,7 @@ export default defineConfig({
   define: {
     VITE_DEFINE_BASE_PATH: JSON.stringify(process.env.SUB_DIR_PATH_BUILDER),
   },
+  resolve: {
+    alias: [{ find: '@kaminiten-editor', replacement: '/src' }],
+  },
 });

@@ -1,12 +1,18 @@
-interface FileSystemDirectoryHandle {
+import { FileNodeInfo } from './types';
+
+interface MyFileSystemDirectoryHandle extends FileSystemDirectoryHandle {
   values(): AsyncIterableIterator<FileSystemFileHandle>;
+  getDirectoryHandle(
+    name: string,
+    options?: FileSystemGetDirectoryOptions | undefined,
+  ): Promise<MyFileSystemDirectoryHandle>;
 }
 declare global {
   interface Window {
-    showDirectoryPicker(): Promise<FileSystemDirectoryHandle>;
+    showDirectoryPicker(): Promise<MyFileSystemDirectoryHandle>;
   }
 }
-let rootHandle: FileSystemDirectoryHandle;
+let rootHandle: MyFileSystemDirectoryHandle;
 export async function getRootDirectoryHandle() {
   if (rootHandle) return rootHandle;
   try {
@@ -18,24 +24,16 @@ export async function getRootDirectoryHandle() {
     return null;
   }
 }
+
 export const readDirectory = async (
-  handle: FileSystemDirectoryHandle | null,
+  handle: MyFileSystemDirectoryHandle | null,
+  parentDirPath: string,
 ) => {
   if (!handle) return [];
   const files = await handle.values();
-  const ret: { name: string; kind: string }[] = [];
+  const ret: FileNodeInfo[] = [];
   for await (const file of files) {
-    ret.push({ name: file.name, kind: file.kind });
-  }
-  return ret;
-};
-export const readFiles = async (
-  fileHandlers: AsyncIterableIterator<FileSystemFileHandle>,
-) => {
-  const ret: { [key: string]: string } = {};
-  for await (const fileHandler of fileHandlers) {
-    const file = await fileHandler.getFile();
-    ret[file.name] = await file.text();
+    ret.push({ name: file.name, kind: file.kind, dirPath: parentDirPath });
   }
   return ret;
 };

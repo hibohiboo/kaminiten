@@ -1,5 +1,10 @@
 {
   "extends": "@kaminiten/tsconfig/react",
   "include": ["src"],
+  "compilerOptions": {
+    "paths": {
+      "@kaminiten-editor/*": ["./src/*"]
+    }
+  },
   "references": [{ "path": "./tsconfig.node.json" }]
 }
