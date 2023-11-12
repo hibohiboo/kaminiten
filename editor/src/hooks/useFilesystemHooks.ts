@@ -38,12 +38,7 @@ export function useFileSystem() {
   );
   const handleNodeCollapse = React.useCallback(
     async (_node: TreeNodeInfo, nodePath: number[]) => {
-      const newFsList = await updateCollapseFileNodeState(
-        _node,
-        fsNodes,
-        nodePath,
-      );
-      console.log(nodePath);
+      const newFsList = await updateCollapseFileNodeState(fsNodes, nodePath);
       setObj(newFsList);
     },
     [fsNodes, setObj],

@@ -1,13 +1,18 @@
-import { TreeNodeInfo } from '@blueprintjs/core';
-import { clone } from 'lodash';
+import { cloneDeep } from 'lodash';
 import { FileNodeState } from '../fileSystem/types';
 
+/**
+ * ノードを閉じる
+ *
+ * @param fsNodes  ファイルツリーの状態
+ * @param nodePath 閉じるノードのパス [0, 1, 2] なら fsNodes[0].children[1].children[2] が閉じる
+ * @returns
+ */
 export const updateCollapseFileNodeState = async (
-  _node: TreeNodeInfo,
   fsNodes: FileNodeState[],
   nodePath: number[],
 ) => {
-  const newState = clone(fsNodes);
+  const newState = cloneDeep(fsNodes);
 
   if (nodePath.length === 1) {
     newState[nodePath[0]].isExpanded = false;
