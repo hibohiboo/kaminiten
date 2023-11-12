@@ -7,10 +7,17 @@ export const fileNodeStateToTreeNodeInfo = (
   return {
     id: state.id,
     hasCaret: state.kind === 'directory',
-    icon: state.kind === 'directory' ? 'folder-close' : 'document',
+    icon: getIcon(state.kind, state.isExpanded),
     label: state.name,
     isExpanded: state.isExpanded,
     nodeData: state,
     childNodes: state.children?.map(fileNodeStateToTreeNodeInfo),
   };
 };
+
+function getIcon(kind: string, isExpanded: boolean) {
+  if (kind === 'directory') {
+    return isExpanded ? 'folder-open' : 'folder-close';
+  }
+  return 'document';
+}

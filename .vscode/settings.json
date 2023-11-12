@@ -1,4 +1,5 @@
 {
+  "jestrunner.configPath": "editor/jest.config.json",
   "eslint.format.enable": false,
   "eslint.workingDirectories": [{"mode": "auto"}],
   "eslint.validate": [
