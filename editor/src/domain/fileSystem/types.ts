@@ -6,6 +6,7 @@ export interface FileNodeInfo {
 export interface FileNodeState extends FileNodeInfo {
   id: string; // dirPath + name: slash区切りのpath ex) dir1/dir2/file1
   isExpanded: boolean;
+  isSelected: boolean;
   children?: FileNodeState[];
 }
 export interface MyFileSystemDirectoryHandle extends FileSystemDirectoryHandle {

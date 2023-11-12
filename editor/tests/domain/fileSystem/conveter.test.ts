@@ -10,6 +10,7 @@ describe('fileNodeStateToTreeNodeInfo', () => {
     name: 'test',
     dirPath: '',
     isExpanded: false,
+    isSelected: false,
   };
   it('stateが存在する場合、TreeNodeInfoを返す', () => {
     const result = fileNodeStateToTreeNodeInfo(state);
@@ -19,6 +20,7 @@ describe('fileNodeStateToTreeNodeInfo', () => {
       icon: 'folder-close',
       label: 'test',
       isExpanded: false,
+      isSelected: false,
       nodeData: state,
     });
   });

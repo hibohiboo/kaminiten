@@ -17,6 +17,7 @@ describe('updateFileNodeState', () => {
       name: 'test',
       dirPath: '',
       isExpanded: false,
+      isSelected: false,
       children: [
         {
           id: 'test/sample',
@@ -24,6 +25,7 @@ describe('updateFileNodeState', () => {
           name: 'sample',
           dirPath: 'test',
           isExpanded: false,
+          isSelected: false,
         },
         {
           id: 'test/sample2',
@@ -31,6 +33,7 @@ describe('updateFileNodeState', () => {
           name: 'sample2',
           dirPath: 'test',
           isExpanded: false,
+          isSelected: false,
         },
       ],
     },
@@ -47,6 +50,7 @@ describe('updateFileNodeState', () => {
           name: 'test',
           dirPath: '',
           isExpanded: false,
+          isSelected: false,
           children: [],
         },
       ];
@@ -75,6 +79,7 @@ describe('updateFileNodeState', () => {
       {
         id: 'test/sample2/add', // IDが親のパスと子の名前を結合したものになっていること
         isExpanded: false,
+        isSelected: false,
         kind: 'directory',
         name: 'add',
         dirPath: 'test/sample2',

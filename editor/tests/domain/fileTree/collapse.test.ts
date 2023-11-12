@@ -1,14 +1,18 @@
 import { updateCollapseFileNodeState } from '@kaminiten-editor/domain/fileTree/collapse';
-
+const defaultNode = {
+  id: 'test',
+  kind: 'directory',
+  name: 'test',
+  dirPath: '',
+  isExpanded: false,
+  isSelected: false,
+};
 describe('updateCollapseFileNodeState', () => {
   describe('選択したパスのフォルダを閉じること', () => {
     it('1階層', async () => {
       const fsNodes = [
         {
-          id: 'test',
-          kind: 'directory',
-          name: 'test',
-          dirPath: '',
+          ...defaultNode,
           isExpanded: true,
         },
       ];
@@ -19,20 +23,18 @@ describe('updateCollapseFileNodeState', () => {
     it('2階層', async () => {
       const fsNodes = [
         {
-          id: 'test',
-          kind: 'directory',
-          name: 'test',
-          dirPath: '',
+          ...defaultNode,
           isExpanded: true,
+          isSelected: false,
           children: [
             {
+              ...defaultNode,
               id: 'test/sample',
-              kind: 'directory',
               name: 'sample',
               dirPath: 'test',
-              isExpanded: true,
             },
             {
+              ...defaultNode,
               id: 'test/sample2',
               kind: 'directory',
               name: 'sample2',

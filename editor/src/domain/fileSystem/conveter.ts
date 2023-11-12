@@ -10,6 +10,7 @@ export const fileNodeStateToTreeNodeInfo = (
     icon: getIcon(state.kind, state.isExpanded),
     label: state.name,
     isExpanded: state.isExpanded,
+    isSelected: state.isSelected,
     nodeData: state,
     childNodes: state.children?.map(fileNodeStateToTreeNodeInfo),
   };

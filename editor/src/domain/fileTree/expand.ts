@@ -4,7 +4,7 @@ import {
   readDirectory,
 } from '../fileSystem';
 import { FileNodeState } from '../fileSystem/types';
-
+const defaultState = { isSelected: false, isExpanded: false };
 const updateState = async (
   item: FileNodeState,
   target: string, // slash区切りのpath ex) dir1/dir2/file1
@@ -13,18 +13,19 @@ const updateState = async (
   if (item.id === target) {
     // すでに子供がいる場合は何もしない
     if (item.children) {
-      return { ...item, isExpanded: true };
+      return { ...defaultState, ...item, isExpanded: true };
     }
     // 子供がいない場合は子供を取得して追加する
     const rootHandle = await getRootDirectoryHandle();
     const handle = await getDirectoryHandle(rootHandle, item.id);
     const children = await readDirectory(handle, item.id);
     return {
+      ...defaultState,
       ...item,
       isExpanded: true,
       children: children.map((child) => ({
+        ...defaultState,
         ...child,
-        isExpanded: false,
         id: `${child.dirPath}/${child.name}`,
       })),
     };

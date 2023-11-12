@@ -13,7 +13,14 @@ export function useFileSystem() {
   const readRootDirectory = async () => {
     const handle = await getRootDirectoryHandle();
     const ls = await readDirectory(handle, '');
-    setObj(ls.map((item) => ({ ...item, isExpanded: false, id: item.name })));
+    setObj(
+      ls.map((item) => ({
+        ...item,
+        isExpanded: false,
+        isSelected: false,
+        id: item.name,
+      })),
+    );
   };
   const treeData: TreeNodeInfo[] = fsNodes.map(fileNodeStateToTreeNodeInfo);
 
@@ -33,18 +40,19 @@ export function useFileSystem() {
   );
   const handleNodeClick = React.useCallback(
     async (
-      node: TreeNodeInfo<FileNodeState>,
+      node: TreeNodeInfo,
       nodePath: number[],
       e: React.MouseEvent<HTMLElement>,
     ) => {
-      if (node.nodeData?.kind === 'directory') {
+      const data = node.nodeData as FileNodeState;
+      if (data.kind === 'directory') {
         if (node.isExpanded) {
           await handleNodeCollapse(node, nodePath);
         } else {
           await handleNodeExpand(node);
         }
       }
-      if (node.nodeData?.kind === 'file') {
+      if (data.kind === 'file') {
         console.log('file');
         console.log(e);
       }
