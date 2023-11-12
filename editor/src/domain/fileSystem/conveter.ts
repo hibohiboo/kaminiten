@@ -3,13 +3,14 @@ import { FileNodeState } from './types';
 
 export const fileNodeStateToTreeNodeInfo = (
   state: FileNodeState,
-): TreeNodeInfo => {
+): TreeNodeInfo<FileNodeState> => {
   return {
     id: state.id,
     hasCaret: state.kind === 'directory',
     icon: state.kind === 'directory' ? 'folder-close' : 'document',
     label: state.name,
     isExpanded: state.isExpanded,
+    nodeData: state,
     childNodes: state.children?.map(fileNodeStateToTreeNodeInfo),
   };
 };

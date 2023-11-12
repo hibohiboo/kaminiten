@@ -16,22 +16,10 @@ export function useFileSystem() {
     setObj(ls.map((item) => ({ ...item, isExpanded: false, id: item.name })));
   };
   const treeData: TreeNodeInfo[] = fsNodes.map(fileNodeStateToTreeNodeInfo);
-  const handleNodeClick = React.useCallback(
-    (
-      node: TreeNodeInfo,
-      nodePath: number[],
-      e: React.MouseEvent<HTMLElement>,
-    ) => {
-      console.log('click');
-      console.log(node);
-      console.log(nodePath);
-      console.log(e);
-    },
-    [],
-  );
+
   const handleNodeExpand = React.useCallback(
-    async (_node: TreeNodeInfo) => {
-      const newFsList = await updateFileNodeState(_node, fsNodes);
+    async (node: TreeNodeInfo) => {
+      const newFsList = await updateFileNodeState(node, fsNodes);
       setObj(newFsList);
     },
     [fsNodes, setObj],
@@ -42,6 +30,26 @@ export function useFileSystem() {
       setObj(newFsList);
     },
     [fsNodes, setObj],
+  );
+  const handleNodeClick = React.useCallback(
+    async (
+      node: TreeNodeInfo<FileNodeState>,
+      nodePath: number[],
+      e: React.MouseEvent<HTMLElement>,
+    ) => {
+      if (node.nodeData?.kind === 'directory') {
+        if (node.isExpanded) {
+          await handleNodeCollapse(node, nodePath);
+        } else {
+          await handleNodeExpand(node);
+        }
+      }
+      if (node.nodeData?.kind === 'file') {
+        console.log('file');
+        console.log(e);
+      }
+    },
+    [handleNodeCollapse, handleNodeExpand],
   );
   return {
     obj: fsNodes,

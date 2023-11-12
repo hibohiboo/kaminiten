@@ -12,6 +12,11 @@ const updateState = async (
 ): Promise<FileNodeState> => {
   // IDが一致したら更新処理を行う
   if (item.id === target) {
+    // すでに子供がいる場合は何もしない
+    if (item.children) {
+      return { ...item, isExpanded: true };
+    }
+    // 子供がいない場合は子供を取得して追加する
     const rootHandle = await getRootDirectoryHandle();
     const handle = await getDirectoryHandle(rootHandle, item.id);
     const children = await readDirectory(handle, item.id);
