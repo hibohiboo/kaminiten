@@ -7,8 +7,7 @@ function App() {
   return (
     <div>
       <Button onClick={fs.readRootDirectory}>クリックで読み込み</Button>
-      <pre>{JSON.stringify(fs.obj, null, 2)}</pre>
-      <FileTree />
+      <FileTree /> <pre>{JSON.stringify(fs.obj, null, 2)}</pre>
     </div>
   );
 }

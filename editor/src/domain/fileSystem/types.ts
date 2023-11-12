@@ -2,5 +2,9 @@ export interface FileNodeInfo {
   name: string;
   kind: string;
   dirPath: string;
-  children?: FileNodeInfo[];
+}
+export interface FileNodeState extends FileNodeInfo {
+  isExpanded: boolean;
+  id: string;
+  children?: FileNodeState[];
 }
