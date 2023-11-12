@@ -9,6 +9,7 @@ function FileTree() {
         contents={fs.treeData}
         onNodeClick={fs.handleNodeClick}
         onNodeExpand={fs.handleNodeExpand}
+        onNodeCollapse={fs.handleNodeCollapse}
       />
     </div>
   );

@@ -1,6 +1,7 @@
 import { type TreeNodeInfo } from '@blueprintjs/core';
 import { fileNodeStateToTreeNodeInfo } from '@kaminiten-editor/domain/fileSystem/conveter';
-import { updateFileNodeState } from '@kaminiten-editor/domain/fileSystem/update';
+import { updateCollapseFileNodeState } from '@kaminiten-editor/domain/fileTree/collapse';
+import { updateFileNodeState } from '@kaminiten-editor/domain/fileTree/expand';
 import { atom, useAtom } from 'jotai';
 import React from 'react';
 import { getRootDirectoryHandle, readDirectory } from '../domain/fileSystem';
@@ -29,8 +30,19 @@ export function useFileSystem() {
     [],
   );
   const handleNodeExpand = React.useCallback(
-    async (_node: TreeNodeInfo, nodePath: number[]) => {
+    async (_node: TreeNodeInfo) => {
       const newFsList = await updateFileNodeState(_node, fsNodes);
+      setObj(newFsList);
+    },
+    [fsNodes, setObj],
+  );
+  const handleNodeCollapse = React.useCallback(
+    async (_node: TreeNodeInfo, nodePath: number[]) => {
+      const newFsList = await updateCollapseFileNodeState(
+        _node,
+        fsNodes,
+        nodePath,
+      );
       console.log(nodePath);
       setObj(newFsList);
     },
@@ -42,5 +54,6 @@ export function useFileSystem() {
     treeData,
     handleNodeClick,
     handleNodeExpand,
+    handleNodeCollapse,
   };
 }

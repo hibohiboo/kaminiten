@@ -1,6 +1,10 @@
 import { TreeNodeInfo } from '@blueprintjs/core';
-import { FileNodeState } from './types';
-import { getDirectoryHandle, getRootDirectoryHandle, readDirectory } from '.';
+import {
+  getDirectoryHandle,
+  getRootDirectoryHandle,
+  readDirectory,
+} from '../fileSystem';
+import { FileNodeState } from '../fileSystem/types';
 
 const updateState = async (
   item: FileNodeState,
