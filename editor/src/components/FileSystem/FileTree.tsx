@@ -5,7 +5,11 @@ function FileTree() {
   const fs = useFileSystem();
   return (
     <div>
-      <Tree contents={fs.treeData} />
+      <Tree
+        contents={fs.treeData}
+        onNodeClick={fs.handleNodeClick}
+        onNodeExpand={fs.handleNodeExpand}
+      />
     </div>
   );
 }

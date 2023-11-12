@@ -37,3 +37,17 @@ export const readDirectory = async (
   }
   return ret;
 };
+export async function getDirectoryHandle(
+  rootHandle: MyFileSystemDirectoryHandle | null,
+  path: string,
+) {
+  if (!rootHandle) return null;
+  try {
+    const handle = await rootHandle.getDirectoryHandle(path);
+    if (!handle) return null;
+    return handle;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}

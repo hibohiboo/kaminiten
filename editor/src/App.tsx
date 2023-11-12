@@ -1,4 +1,4 @@
-import { Button, Tree } from '@blueprintjs/core';
+import { Button } from '@blueprintjs/core';
 import { useFileSystem } from '@kaminiten-editor/hooks/useFilesystemHooks';
 import FileTree from './components/FileSystem/FileTree';
 
@@ -8,7 +8,6 @@ function App() {
     <div>
       <Button onClick={fs.readRootDirectory}>クリックで読み込み</Button>
       <pre>{JSON.stringify(fs.obj, null, 2)}</pre>
-      <Tree contents={fs.treeData} />
       <FileTree />
     </div>
   );
