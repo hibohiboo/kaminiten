@@ -63,9 +63,23 @@ describe('updateFileNodeState', () => {
     });
   });
   it('選択したフォルダの子がないときに追加すること', async () => {
-    mockedReadDirectory.mockImplementation(async () => []);
+    mockedReadDirectory.mockImplementation(async (_, id: string) => [
+      {
+        kind: 'directory',
+        name: 'add',
+        dirPath: id,
+      },
+    ]);
     const result = await updateFileNodeState('test/sample2', fsNodes);
-    expect(result[0].children![1].children).toEqual([]);
+    expect(result[0].children![1].children).toEqual([
+      {
+        id: 'test/sample2/add', // IDが親のパスと子の名前を結合したものになっていること
+        isExpanded: false,
+        kind: 'directory',
+        name: 'add',
+        dirPath: 'test/sample2',
+      },
+    ]);
     expect(mockedHandler.mock.calls.length).toBe(1);
     expect(mockedRootHandler.mock.calls.length).toBe(1);
     expect(mockedReadDirectory.mock.calls.length).toBe(1);
