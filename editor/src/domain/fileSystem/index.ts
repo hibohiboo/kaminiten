@@ -43,7 +43,12 @@ export async function getDirectoryHandle(
 ) {
   if (!rootHandle) return null;
   try {
-    const handle = await rootHandle.getDirectoryHandle(path);
+    const dirs = path.split('/');
+    const handle = dirs.reduce(async (acc, dir: string) => {
+      const parentHandle = await acc;
+      const handle = await parentHandle.getDirectoryHandle(dir);
+      return handle;
+    }, Promise.resolve(rootHandle));
     if (!handle) return null;
     return handle;
   } catch (e) {

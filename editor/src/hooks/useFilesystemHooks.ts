@@ -1,17 +1,13 @@
 import { type TreeNodeInfo } from '@blueprintjs/core';
 import { fileNodeStateToTreeNodeInfo } from '@kaminiten-editor/domain/fileSystem/conveter';
+import { updateFileNodeState } from '@kaminiten-editor/domain/fileSystem/update';
 import { atom, useAtom } from 'jotai';
 import React from 'react';
-import {
-  getDirectoryHandle,
-  getRootDirectoryHandle,
-  readDirectory,
-} from '../domain/fileSystem';
+import { getRootDirectoryHandle, readDirectory } from '../domain/fileSystem';
 import type { FileNodeState } from '../domain/fileSystem/types';
 
 const fsNodeAtom = atom<FileNodeState[]>([]);
 export function useFileSystem() {
-  console.log('read');
   const [fsNodes, setObj] = useAtom(fsNodeAtom);
   const readRootDirectory = async () => {
     const handle = await getRootDirectoryHandle();
@@ -34,25 +30,7 @@ export function useFileSystem() {
   );
   const handleNodeExpand = React.useCallback(
     async (_node: TreeNodeInfo, nodePath: number[]) => {
-      const newFsList = await Promise.all(
-        fsNodes.map(async (item) => {
-          if (item.name === _node.label) {
-            const rootHandle = await getRootDirectoryHandle();
-            const handle = await getDirectoryHandle(rootHandle, item.name);
-            const children = await readDirectory(handle, item.name);
-            return {
-              ...item,
-              isExpanded: true,
-              children: children.map((child) => ({
-                ...child,
-                isExpanded: false,
-                id: child.name,
-              })),
-            };
-          }
-          return item;
-        }),
-      );
+      const newFsList = await updateFileNodeState(_node, fsNodes);
       console.log(nodePath);
       setObj(newFsList);
     },
