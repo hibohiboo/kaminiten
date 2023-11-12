@@ -1,17 +1,5 @@
-import { FileNodeInfo } from './types';
+import { FileNodeInfo, MyFileSystemDirectoryHandle } from './types';
 
-interface MyFileSystemDirectoryHandle extends FileSystemDirectoryHandle {
-  values(): AsyncIterableIterator<FileSystemFileHandle>;
-  getDirectoryHandle(
-    name: string,
-    options?: FileSystemGetDirectoryOptions | undefined,
-  ): Promise<MyFileSystemDirectoryHandle>;
-}
-declare global {
-  interface Window {
-    showDirectoryPicker(): Promise<MyFileSystemDirectoryHandle>;
-  }
-}
 let rootHandle: MyFileSystemDirectoryHandle;
 export async function getRootDirectoryHandle() {
   if (rootHandle) return rootHandle;

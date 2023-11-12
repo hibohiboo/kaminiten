@@ -8,3 +8,15 @@ export interface FileNodeState extends FileNodeInfo {
   isExpanded: boolean;
   children?: FileNodeState[];
 }
+export interface MyFileSystemDirectoryHandle extends FileSystemDirectoryHandle {
+  values(): AsyncIterableIterator<FileSystemFileHandle>;
+  getDirectoryHandle(
+    name: string,
+    options?: FileSystemGetDirectoryOptions | undefined,
+  ): Promise<MyFileSystemDirectoryHandle>;
+}
+declare global {
+  interface Window {
+    showDirectoryPicker(): Promise<MyFileSystemDirectoryHandle>;
+  }
+}
