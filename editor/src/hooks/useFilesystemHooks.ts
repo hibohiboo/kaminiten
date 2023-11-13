@@ -3,7 +3,7 @@ import { fileNodeStateToTreeNodeInfo } from '@kaminiten-editor/domain/fileSystem
 import { updateClickFileNodeState } from '@kaminiten-editor/domain/fileTree/click';
 import { updateCollapseFileNodeState } from '@kaminiten-editor/domain/fileTree/collapse';
 import { updateFileNodeState } from '@kaminiten-editor/domain/fileTree/expand';
-import { textFileAtom } from '@kaminiten-editor/domain/selectFile/fileAtom';
+import { fileAtom } from '@kaminiten-editor/domain/selectFile/fileAtom';
 import { atom, useAtom } from 'jotai';
 import React from 'react';
 import {
@@ -17,7 +17,7 @@ import type { FileNodeState } from '../domain/fileSystem/types';
 const fsNodeAtom = atom<FileNodeState[]>([]);
 export function useFileSystem() {
   const [fsNodes, setObj] = useAtom(fsNodeAtom);
-  const [, setFile] = useAtom(textFileAtom);
+  const [, setFile] = useAtom(fileAtom);
   const readRootDirectory = async () => {
     const handle = await getRootDirectoryHandle();
     const ls = await readDirectory(handle, '');
@@ -59,8 +59,8 @@ export function useFileSystem() {
         const dirHandle = await getDirectoryHandle(handle, data.dirPath);
         if (!dirHandle) return;
         const file = await readFile(dirHandle, data.name);
-        const text = await file.text();
-        setFile(text);
+
+        setFile(file);
         return;
       }
       if (data.kind !== 'directory') return;

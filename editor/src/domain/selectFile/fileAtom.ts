@@ -1,3 +1,3 @@
 import { atom } from 'jotai';
 
-export const textFileAtom = atom<string>('');
+export const fileAtom = atom<File | null>(null);
