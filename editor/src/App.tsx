@@ -6,14 +6,14 @@ function App() {
   const fs = useFileSystem();
   return (
     <div>
-      <Splitter style={{ height: '300px' }}>
-        <SplitterPanel className="flex align-items-center justify-content-center">
-          <Button onClick={fs.readRootDirectory}>クリックで読み込み</Button>
-          <FileTree /> <pre>{JSON.stringify(fs.obj, null, 2)}</pre>
+      <Splitter>
+        <SplitterPanel size={20}>
+          <div style={{ height: '100vh', overflowY: 'auto' }}>
+            <Button onClick={fs.readRootDirectory}>クリックで読み込み</Button>
+            <FileTree /> <pre>{JSON.stringify(fs.obj, null, 2)}</pre>
+          </div>
         </SplitterPanel>
-        <SplitterPanel className="flex align-items-center justify-content-center">
-          Panel 2
-        </SplitterPanel>
+        <SplitterPanel size={80}>Panel 2</SplitterPanel>
       </Splitter>
     </div>
   );
