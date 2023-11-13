@@ -1,5 +1,6 @@
 import { type TreeNodeInfo } from '@blueprintjs/core';
 import { fileNodeStateToTreeNodeInfo } from '@kaminiten-editor/domain/fileSystem/conveter';
+import { updateClickFileNodeState } from '@kaminiten-editor/domain/fileTree/click';
 import { updateCollapseFileNodeState } from '@kaminiten-editor/domain/fileTree/collapse';
 import { updateFileNodeState } from '@kaminiten-editor/domain/fileTree/expand';
 import { atom, useAtom } from 'jotai';
@@ -39,25 +40,24 @@ export function useFileSystem() {
     [fsNodes, setObj],
   );
   const handleNodeClick = React.useCallback(
-    async (
-      node: TreeNodeInfo,
-      nodePath: number[],
-      e: React.MouseEvent<HTMLElement>,
-    ) => {
+    async (node: TreeNodeInfo, nodePath: number[]) => {
       const data = node.nodeData as FileNodeState;
-      if (data.kind === 'directory') {
-        if (node.isExpanded) {
-          await handleNodeCollapse(node, nodePath);
-        } else {
-          await handleNodeExpand(node);
-        }
-      }
       if (data.kind === 'file') {
-        console.log('file');
-        console.log(e);
+        const newFsList = await updateClickFileNodeState(
+          node.id as string,
+          fsNodes,
+        );
+        setObj(newFsList);
+        return;
       }
+      if (data.kind !== 'directory') return;
+      if (node.isExpanded) {
+        await handleNodeCollapse(node, nodePath);
+        return;
+      }
+      await handleNodeExpand(node);
     },
-    [handleNodeCollapse, handleNodeExpand],
+    [fsNodes, handleNodeCollapse, handleNodeExpand],
   );
   return {
     obj: fsNodes,
