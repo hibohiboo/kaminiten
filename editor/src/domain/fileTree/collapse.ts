@@ -1,5 +1,5 @@
-import { cloneDeep } from 'lodash';
 import { FileNodeState } from '../fileSystem/types';
+import { updateNodes } from './update';
 
 /**
  * ノードを閉じる
@@ -11,20 +11,7 @@ import { FileNodeState } from '../fileSystem/types';
 export const updateCollapseFileNodeState = async (
   fsNodes: FileNodeState[],
   nodePath: number[],
-) => {
-  const newState = cloneDeep(fsNodes);
-
-  if (nodePath.length === 1) {
-    newState[nodePath[0]].isExpanded = false;
-  } else {
-    collapseNode(newState[nodePath[0]], nodePath.slice(1));
-  }
-  return newState;
-};
-function collapseNode(newState: FileNodeState, nodePath: number[]): void {
-  let node = newState;
-  for (let i = 0; i < nodePath.length; i++) {
-    node = node.children![nodePath[i]];
-  }
-  node.isExpanded = false;
-}
+) =>
+  updateNodes(fsNodes, nodePath, (node) => {
+    node.isExpanded = false;
+  });
