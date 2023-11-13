@@ -18,7 +18,7 @@ const updateState = async (
       ),
     };
   }
-  return item;
+  return { ...item, isSelected: false };
 };
 export const updateClickFileNodeState = async (
   path: string,
