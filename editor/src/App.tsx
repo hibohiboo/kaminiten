@@ -1,9 +1,12 @@
 import { Button } from '@blueprintjs/core';
 import { useFileSystem } from '@kaminiten-editor/hooks/useFilesystemHooks';
+import { useAtom } from 'jotai';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
 import FileTree from './components/FileSystem/FileTree';
+import { textFileAtom } from './domain/selectFile/fileAtom';
 function App() {
   const fs = useFileSystem();
+  const [text] = useAtom(textFileAtom);
   return (
     <div>
       <Splitter>
@@ -13,7 +16,7 @@ function App() {
             <FileTree /> <pre>{JSON.stringify(fs.obj, null, 2)}</pre>
           </div>
         </SplitterPanel>
-        <SplitterPanel size={80}>Panel 2</SplitterPanel>
+        <SplitterPanel size={80}>{text}</SplitterPanel>
       </Splitter>
     </div>
   );

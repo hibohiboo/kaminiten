@@ -30,6 +30,7 @@ export async function getDirectoryHandle(
   path: string,
 ) {
   if (!rootHandle) return null;
+  if (path === '') return rootHandle;
   try {
     const dirs = path.split('/');
     const handle = dirs.reduce(async (acc, dir: string) => {
@@ -43,4 +44,12 @@ export async function getDirectoryHandle(
     console.log(e);
     return null;
   }
+}
+export async function readFile(
+  handle: MyFileSystemDirectoryHandle,
+  filename: string,
+) {
+  const fileHandle = await handle.getFileHandle(filename);
+  const file = await fileHandle.getFile();
+  return file;
 }
