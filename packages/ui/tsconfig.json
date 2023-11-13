@@ -8,5 +8,5 @@
   },
   "include": ["src", "stories/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "extends": "@yakumi/tsconfig/react"
+  "extends": "@kaminiten/tsconfig/react",
 }

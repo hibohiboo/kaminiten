@@ -1,6 +1,6 @@
 {
   "extends": "@kaminiten/tsconfig/react",
-  "include": ["src", "tests"],
+  "include": ["src", "tests","./jest"],
   "compilerOptions": {
     "paths": {
       "@kaminiten-editor/*": ["./src/*"]

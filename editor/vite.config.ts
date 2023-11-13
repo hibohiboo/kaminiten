@@ -15,4 +15,22 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@kaminiten-editor', replacement: '/src' }],
   },
+  build: {
+    chunkSizeWarningLimit: 550, // blueprintが538.09 kBあるため、デフォルトの500kBを超えてしまう
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          reactFamily: ['react-router-dom'],
+          others: ['lodash'],
+          // others: ['date-fns', 'papaparse'],
+          // udon: ['file-saver', 'jszip'],
+          // canvas: ['html2canvas'],
+          blueprint: ['@blueprintjs/core'],
+          jotai: ['jotai', 'jotai/utils'],
+          primereact: ['primereact/splitter'],
+        },
+      },
+    },
+  },
 });
