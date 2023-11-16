@@ -27,7 +27,7 @@ export default defineConfig({
           // udon: ['file-saver', 'jszip'],
           // canvas: ['html2canvas'],
           blueprint: ['@blueprintjs/core'],
-          jotai: ['jotai', 'jotai/utils'],
+          jotai: ['jotai'],
           primereact: ['primereact/splitter'],
         },
       },

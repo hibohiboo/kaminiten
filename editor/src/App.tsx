@@ -1,8 +1,9 @@
 import { Button } from '@blueprintjs/core';
+import FIlePreviewer from '@kaminiten-editor/components/FilePreviewer/FilePreviewer';
+import FileTree from '@kaminiten-editor/components/FileSystem/FileTree';
 import { useFileSystem } from '@kaminiten-editor/hooks/useFilesystemHooks';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
-import FIlePreviewer from './components/FIlePreviewer/FilePreviewer';
-import FileTree from './components/FileSystem/FileTree';
+
 function App() {
   const fs = useFileSystem();
   return (
